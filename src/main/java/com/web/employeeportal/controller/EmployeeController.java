@@ -5,8 +5,10 @@ import com.web.employeeportal.services.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
-@CrossOrigin("*")
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/api/v1")
 public class EmployeeController {
 
@@ -16,5 +18,10 @@ public class EmployeeController {
     @PostMapping("/employees")
     public Employee createEmployee(@RequestBody Employee employee){
         return service.createEmployee(employee);
+    }
+
+    @GetMapping("/employees")
+    public List<Employee> getAllEmployees() {
+        return service.getAllEmployees();
     }
 }
